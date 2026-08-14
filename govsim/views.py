@@ -12,7 +12,7 @@ class AdListView(ListView):
 
 # Notebook Dashboard View
 class AutoMatrixDashboardView(TemplateView):
-    template_name = 'govsim/auto_matrix_dashboard.html'
+    template_name = 'govsim/traffic_matrix_dashboard.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -115,5 +115,5 @@ def traffic_data_api(request):
     return JsonResponse({'events': data}, safe=False)
 
 # 3. Notebook Dashboard Class-Based View
-class AutoMatrixDashboardView(TemplateView):
-    template_name = 'govsim/trafic_matrix_dashboard.html'
+#class AutoMatrixDashboardView(TemplateView):
+#    template_name = 'govsim/traffic_matrix_dashboard.html'
