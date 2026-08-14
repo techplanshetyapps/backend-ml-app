@@ -17,7 +17,7 @@
                 extend: {
                     colors: {
                         background: '#616c7d',
-                        'background-behind': '#121212',
+                        'background-behind': '#98a3b5',
                         'background-raised-light': '#1f1f1f',
                         foreground: '#ededed',
                         secondary: '#262626',
@@ -35,17 +35,57 @@
 <div class="bg-background-behind text-foreground w-full font-sans antialiased min-h-screen flex flex-col justify-between">
     <div class="min-h-screen flex flex-col justify-between">
 
+        <!-- Top Navigation Bar -->
+        <nav class="fixed top-0 left-0 right-0 z-50 bg-secondary/95 backdrop-blur-md border-b border-secondary-active shadow-lg">
+            <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-16">
+
+                    <!-- Brand / Logo -->
+                    <div class="flex items-center space-x-3">
+                        <span class="w-3 h-3 rounded-full bg-accent animate-pulse"></span>
+                        <a href="#" class="font-mono text-lg font-bold tracking-wider text-foreground hover:text-accent transition-colors">
+                            AUTO<span class="text-accent">MATRIX</span>
+                        </a>
+                    </div>
+
+                    <!-- Navigation Links (Clickable) -->
+                    <div class="hidden md:flex items-center space-x-6 font-mono text-xs uppercase tracking-wider">
+                        <a href="#" class="text-foreground hover:text-accent transition-colors px-3 py-2 rounded-md hover:bg-secondary-hover">Dashboard</a>
+                        <a href="#" class="text-accent font-semibold px-3 py-2 rounded-md bg-secondary-hover">Notebooks</a>
+                        <a href="#" class="text-foreground hover:text-accent transition-colors px-3 py-2 rounded-md hover:bg-secondary-hover">Datasets</a>
+                        <a href="#" class="text-foreground hover:text-accent transition-colors px-3 py-2 rounded-md hover:bg-secondary-hover">Execution Logs</a>
+                        <a href="#" class="text-foreground hover:text-accent transition-colors px-3 py-2 rounded-md hover:bg-secondary-hover">System Status</a>
+                    </div>
+
+                    <!-- Right Action Button / Profile -->
+                    <div class="flex items-center space-x-4">
+                        <button class="bg-accent hover:bg-accent-hover text-white font-mono text-xs uppercase tracking-wider px-4 py-2 rounded transition-colors shadow-sm">
+                            Export Matrix
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Mobile Menu Dropdown Strip (Optional sub-nav bar for smaller screens) -->
+            <div class="md:hidden border-t border-secondary-active px-4 py-2 flex space-x-4 overflow-x-auto font-mono text-[11px] uppercase tracking-wider bg-secondary">
+                <a href="#" class="text-foreground whitespace-nowrap">Dashboard</a>
+                <a href="https://govsim.onrender.com/traffic-matrix-dashboard/" class="text-accent font-semibold whitespace-nowrap">Notebooks</a>
+                <a href="https://govsim.onrender.com/traffic-list/" class="text-foreground whitespace-nowrap">Datasets</a>
+            </div>
+        </nav>
+
         <!-- Main Content Area -->
         <main id="main-content" class="flex-grow px-[2px] mx-auto max-w-[1600px] w-full pt-28">
             <div class="space-y-[2px]">
 
                 <!-- Publications Header & Dynamic Notebook Squares Matrix Section -->
-                <section class="relative bg-background text-foreground p-8 md:p-16 rounded-t-lg">
+                <section class="relative bg-background text-foreground p-8 md:p-16 rounded-t-lg shadow-inner">
                     <div class="max-w-6xl mx-auto">
                         <div class="mb-8">
                             <span class="text-xs font-mono uppercase tracking-widest text-accent font-semibold">Interactive Data Inputs (2)</span>
                             <h1 class="text-4xl md:text-5xl font-normal tracking-tight mt-2 mb-4">Auto-Matrix Notebook Datasets</h1>
-                            <p class="text-sm text-neutral-400 font-mono" id="selection-counter">Items currently selected (0)</p>
+                            <p class="text-sm text-neutral-300 font-mono" id="selection-counter">Items currently selected (0)</p>
                         </div>
 
                         <!-- Dynamic Notebook Grid Feed Container (Squares Matrix rendered via Django Context) -->
@@ -73,7 +113,7 @@
                                     </div>
                                 </div>
                                 <div class="mt-6 pt-4 border-t border-secondary flex justify-between items-center">
-                                    <span class="text-[11px] font-mono text-neutral-500">Matrix Output</span>
+                                    <span class="text-[11px] font-mono text-neutral-400">Matrix Output</span>
                                     <button class="text-xs font-mono uppercase tracking-wider text-accent hover:underline whitespace-nowrap">
                                         Inspect payload
                                     </button>
