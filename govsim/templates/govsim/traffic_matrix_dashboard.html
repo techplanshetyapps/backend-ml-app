@@ -1,0 +1,118 @@
+{% extends "govsim/base_menu.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block head %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix Notebooks & Dashboard - Auto Matrix</title>
+{% endblock %}
+
+{% block content %}
+    <!-- Tailwind CSS Play CDN for instant styling without build steps -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#616c7d',
+                        'background-behind': '#121212',
+                        'background-raised-light': '#1f1f1f',
+                        foreground: '#ededed',
+                        secondary: '#262626',
+                        'secondary-hover': '#333333',
+                        'secondary-active': '#404040',
+                        accent: '#f15a29',
+                        'accent-hover': '#ff6b3b',
+                        'accent-active': '#d94d20'
+                    }
+                }
+            }
+        }
+    </script>
+
+<div class="bg-background-behind text-foreground w-full font-sans antialiased min-h-screen flex flex-col justify-between">
+    <div class="min-h-screen flex flex-col justify-between">
+
+        <!-- Main Content Area -->
+        <main id="main-content" class="flex-grow px-[2px] mx-auto max-w-[1600px] w-full pt-28">
+            <div class="space-y-[2px]">
+
+                <!-- Publications Header & Dynamic Notebook Squares Matrix Section -->
+                <section class="relative bg-background text-foreground p-8 md:p-16 rounded-t-lg">
+                    <div class="max-w-6xl mx-auto">
+                        <div class="mb-8">
+                            <span class="text-xs font-mono uppercase tracking-widest text-accent font-semibold">Interactive Data Inputs (2)</span>
+                            <h1 class="text-4xl md:text-5xl font-normal tracking-tight mt-2 mb-4">Auto-Matrix Notebook Datasets</h1>
+                            <p class="text-sm text-neutral-400 font-mono" id="selection-counter">Items currently selected (0)</p>
+                        </div>
+
+                        <!-- Dynamic Notebook Grid Feed Container (Squares Matrix rendered via Django Context) -->
+                        <div id="publication-feed" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {% for nb in notebooks_data %}
+                            <article class="notebook-card bg-secondary/50 border border-secondary p-6 rounded-lg hover:border-accent transition-all duration-300 flex flex-col justify-between cursor-pointer select-none">
+                                <div>
+                                    <div class="flex justify-between items-start mb-3">
+                                        <span class="text-xs font-mono text-accent uppercase tracking-wider">{{ nb.type }}</span>
+                                        <input type="checkbox" class="notebook-checkbox w-4 h-4 accent-orange-500 cursor-pointer">
+                                    </div>
+                                    <h3 class="text-lg font-semibold mt-1 mb-2 text-foreground font-mono">{{ nb.title }}</h3>
+
+                                    <div class="bg-black/60 p-4 rounded border border-secondary/50 font-mono text-[11px] text-neutral-300 max-h-72 overflow-y-auto space-y-3 mt-4">
+                                        <p class="text-accent uppercase tracking-wider font-bold mb-1">// Execution Log Output:</p>
+                                        {% for out in nb.outputs %}
+                                            {% if out.type == 'image' %}
+                                                <div class="my-2">
+                                                    <img src="{{ out.content }}" alt="Notebook Cell Output Image" class="max-w-full h-auto rounded border border-neutral-700">
+                                                </div>
+                                            {% else %}
+                                                <pre class="whitespace-pre-wrap font-mono leading-relaxed">{{ out.content }}</pre>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="mt-6 pt-4 border-t border-secondary flex justify-between items-center">
+                                    <span class="text-[11px] font-mono text-neutral-500">Matrix Output</span>
+                                    <button class="text-xs font-mono uppercase tracking-wider text-accent hover:underline whitespace-nowrap">
+                                        Inspect payload
+                                    </button>
+                                </div>
+                            </article>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Script to handle interactive selection checkboxes and counter updates -->
+    <script>
+        const cards = document.querySelectorAll('.notebook-card');
+        let selectedCount = 0;
+
+        cards.forEach(card => {
+            const checkbox = card.querySelector('.notebook-checkbox');
+            card.addEventListener('click', (e) => {
+                if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'BUTTON') {
+                    checkbox.checked = !checkbox.checked;
+                }
+                checkbox.checked ? card.classList.add('border-accent', 'bg-secondary') : card.classList.remove('border-accent', 'bg-secondary');
+
+                selectedCount = document.querySelectorAll('.notebook-checkbox:checked').length;
+                document.getElementById('selection-counter').innerText = `Items currently selected (${selectedCount})`;
+            });
+
+            checkbox.addEventListener('change', () => {
+                checkbox.checked ? card.classList.add('border-accent', 'bg-secondary') : card.classList.remove('border-accent', 'bg-secondary');
+
+                selectedCount = document.querySelectorAll('.notebook-checkbox:checked').length;
+                document.getElementById('selection-counter').innerText = `Items currently selected (${selectedCount})`;
+            });
+        });
+    </script>
+</div>
+{% endblock %}
