@@ -215,25 +215,6 @@
             background-image: linear-gradient(to bottom, #1f2937, #111827);
         }
 
-        /*body {*/
-        /*    background-size: cover;*/
-        /*    background-repeat: no-repeat;*/
-        /*    background-position: center center;*/
-        /*    background-attachment: fixed;*/
-            /*background-color: #9CAFAA;/* #667F92Fallback color #0092ca */
-            /*color: #484f4f; /*#2a2438;*/
-            /*font-family: Arial, sans-serif;*/
-            /*font-family: 'Courier New', Courier, monospace; # Monospace font for a "circuit" feel */
-        /*    transition: background-color 0.3s, color 0.3s;*/
-        /*}*/
-
-        /*
-        * {
-          font-family: "Fira Code", monospace;
-          font-weight: bold;
-        }
-        src: url("../fonts/Minecraft.ttf") format("truetype");
-        */
 
         @font-face {
                 font-family: "Minecraft";
@@ -401,12 +382,6 @@
 .row-link:last-child {
     margin-right: 0;
 }
-
-/*.granulated-bg{*/
-/*    background-image: url('{% static "granulated-bg.jpg" %}');*/
-/*    background-repeat: repeat;*/
-/*    background-blend-mode: multiply;*/
-/*}*/
 
     </style>
 {% endblock %}
@@ -675,92 +650,6 @@
 
 
 
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark d-flex flex-wrap" style="border-radius:10px !important;">
-    <div class="container-fluidd-flex flex-wrap justify-content-between align-items-center w-100"">
-
-        <a class="navbar-brand m-0 p-2 d-inline-flex align-items-center justify-content-center text-wrap text-center" href="https://www.webapplications.app" style="font-weight: bold; color: #7e9ebd; font-size: calc(0.9rem + 0.4vw);">
-    &nbsp;{% trans "GOSIM APPLICATION" %}
-        </a>
-
-        <button id="hamburger-button" type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span id="hamburger-icon" class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbar-collapse">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" data-url="https://govsim.onrender.com">
-                   <button id="btn1" class="btn btn-outline-secondary">
-                    {% trans "ETC" %}
-                   </button>
-                        </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" data-url="https://govsim.onrender.com">
-                       <button id="btn5" class="btn btn-outline-secondary">
-                    {% trans "NOTEBOOKS" %}<br /> {% trans "VARIATIONS" %}
-                        </button>
-                            </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" data-url="https://govsim.onrender.com">
-                       <button id="btn5" class="btn btn-outline-secondary">
-                    {% trans "CODING" %}<br /> {% trans "DATABASE" %}
-                        </button>
-                            </a>
-                </li>
-
-
-                <li class="nav-item">
-                    <a class="nav-link" data-url="#">
-                       <button id="btn5" class="btn btn-outline-secondary">
-                    {% trans "SITEMAP" %}
-                        </button>
-                            </a>
-                </li>
-
-                {% if user.is_authenticated %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url '#' %}">Create Ad</a>
-                    </li>
-                    <li class="nav-item dropdown p-0.5"><!--data-bs-toggle error-->
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-                            {{ user.email }} User Gravatar <!-- Use the gravatar filter here -->
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{% url 'logout' %}?next={% url '#' %}">Logout</a></li>
-                        </ul>
-                    </li>
-                {% else %}
-                <span class="nav">
-                    <li class="nav-item">
-
-                    </li>
-                    </span>
-                {% endif %}
-
-            </ul>
-
-
-
-
-
-            <div class="ml-auto p-1.5">
-                <label class="switch">
-                    <input type="checkbox" id="theme-toggle">
-                    <span class="slider square"></span>
-                </label>
-            </div>
-        </div>
-    </div>
-
-
-</nav>
-
-
 <nav aria-label="breadcrumb" id="js-breadcrumb-nav" class="py-3 px-5 mb-8 bg-slate-100 dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200/80 dark:border-slate-800 transition-all duration-300 ease-out">
     <ol class="flex flex-wrap items-center space-x-2 text-sm font-medium tracking-wide">
 
@@ -817,7 +706,7 @@
 </script>
 
 <script>
-// --- CORE SETUP (Keep existing definitions) ---
+
 const toggle = document.getElementById('theme-toggle');
 const body = document.body;
 const navbar = document.querySelector('.navbar');
@@ -825,15 +714,11 @@ const buttons = document.querySelectorAll('.btn');
 const navbarToggler = document.querySelector('.navbar-toggler');
 const mobileClickTracker = {};
 
-// Select the specific toggles using their IDs
+
 const techBlogToggle = document.getElementById('techBlogDropdown');
 const codingReqsToggle = document.getElementById('codingReqsDropdown');
 
 
-// (Keep existing theme toggle logic here)
-// ...
-
-// Set default to light theme
 navbar.classList.add('navbar-light');
 navbar.style.backgroundColor = '#565f61'; // Custom light theme background color
 
@@ -868,7 +753,6 @@ navbar.style.setProperty('background-image', 'linear-gradient(to right, #4b5563,
 }
 
 
-// Toggle theme and save preference
 toggle.addEventListener('change', () => {
     if (toggle.checked) {
         // Switch to light theme
@@ -911,11 +795,6 @@ toggle.addEventListener('change', () => {
     }
 });
 
-
-
-// ------------------------------------------------------------------
-// --- PART 2: DROPDOWN ON HOVER/CLICK LOGIC (Final Version) ---
-// ------------------------------------------------------------------
 
 function applyDropdownLogic(toggle) {
     if (!toggle) return;
@@ -968,16 +847,7 @@ function applyDropdownLogic(toggle) {
         toggle.addEventListener('click', toggle.desktopClickListener);
 
     } else {
-        // MOBILE: Single click should perform navigation to the href.
-        // We do *not* add any custom click listener here.
 
-        // We do *not* add data-bs-toggle="dropdown" here, because adding it
-        // would enable the menu, overriding the link's href.
-
-        // Standard <a> link behavior (navigation) is the default on mobile
-        // when the navbar is collapsed and data-bs-toggle is absent.
-
-        // Ensure menu starts closed just in case
         dropdownMenu.classList.remove('show');
         toggle.setAttribute('aria-expanded', 'false');
     }
@@ -1025,89 +895,6 @@ window.addEventListener('resize', handleHoverDropdowns);
         });
     });
 </script>
-
-
-<div id="notification1" class="alert alert-dismissible fade show position-fixed bottom-0 end-0 mb-3 me-3" style="display: none; z-index: 1050;" data-bs-toggle="tooltip" title="ФУНКЦІЯ ПЕРЕГЛЯДУ PDF">
-    <div class="d-flex flex-column flex-sm-row align-items-center gap-3">
-        <!-- Image to display in notification -->
-        <div class="col-12 col-sm-2 mb-2 mb-sm-0">
-            <img src="{% static 'programming-image.jpg' %}" alt="Notification Image" class="notification-img img-fluid">
-        </div>
-        <!-- Text content -->
-        <div class="col-12 col-sm-10">
-            <h2><strong>{% trans "ФУНКЦІЯ СПОВІЩЕННЯ" %}</strong></h2>
-            <h3>{% trans "ДОБІРКИ ІНЖЕНЕРІЇ ПРОГРАМ" %}</h3>
-        </div>
-    </div>
-</div>
-
-<div id="notification2" class="alert alert-dismissible fade show position-fixed bottom-0 end-0 mb-3 me-3" style="display: none; z-index: 1050;" data-bs-toggle="tooltip" title="ФУНКЦІЯ ПЕРЕГЛЯДУ PDF">
-    <a href="https://www.programuvannya-stationarycomputers.com" target="_blank">
-    <div class="d-flex flex-column flex-sm-row align-items-center gap-3">
-        <!-- Image to display in notification -->
-        <div class="col-12 col-sm-2 mb-2 mb-sm-0">
-            <img src="{% static 'programming-image.jpg' %}" alt="Notification Image" class="notification-img img-fluid">
-        </div>
-        <!-- Text content -->
-        <div class="col-12 col-sm-10">
-            <h2><strong>{% trans "ФУНКЦІЯ СПОВІЩЕННЯ" %}</strong></h2>
-            <h3>{% trans "ЗРАЗКИ API" %}</h3>
-        </div>
-    </div>
-    </a>
-</div>
-
-<div id="notification3" class="alert alert-dismissible fade show position-fixed bottom-0 end-0 mb-3 me-3" style="display: none; z-index: 1050;" data-bs-toggle="tooltip" title="ФУНКЦІЯ ПЕРЕГЛЯДУ PDF">
-    <a href="https://www.programuvannya-stationarycomputers.com" target="_blank">
-    <div class="d-flex flex-column flex-sm-row align-items-center gap-3">
-        <div class="col-12 col-sm-2 mb-2 mb-sm-0">
-            <img src="{% static 'programming-image.jpg' %}" alt="Notification Image" class="notification-img img-fluid">
-        </div>
-        <div class="col-12 col-sm-10">
-            <h2><strong>{% trans "ФУНКЦІЯ СПОВІЩЕННЯ" %}</strong></h2>
-            <h3>{% trans "ДОБІРКИ КОДУ" %}</h3>
-        </div>
-    </div>
-    </a>
-</div>
-
-
-<div id="notification4" class="alert alert-dismissible fade show position-fixed bottom-0 end-0 mb-3 me-3" style="display: none; z-index: 1050;" data-bs-toggle="tooltip" title="ФУНКЦІЯ ПЕРЕГЛЯДУ PDF">
-    <div class="d-flex flex-column flex-sm-row align-items-center gap-3">
-        <div class="col-12 col-sm-2 mb-2 mb-sm-0">
-            <img src="{% static 'programming-image.jpg' %}" alt="Notification Image" class="notification-img img-fluid">
-        </div>
-        <div class="col-12 col-sm-10">
-            <h2><strong>{% trans "ФУНКЦІЯ СПОВІЩЕННЯ" %}</strong></h2>
-            <h3>{% trans "PROGRAMMING: ЗАГАЛЬНА ІНФОРМАЦІЯ" %}</h3>
-        </div>
-    </div>
-</div>
-
-<div id="notification5" class="alert alert-dismissible fade show position-fixed bottom-0 end-0 mb-3 me-3" style="display: none; z-index: 1050;" data-bs-toggle="tooltip" title="ФУНКЦІЯ ПЕРЕГЛЯДУ PDF">
-    <div class="d-flex flex-column flex-sm-row align-items-center gap-3">
-        <div class="col-12 col-sm-2 mb-2 mb-sm-0">
-            <img src="{% static 'programming-image.jpg' %}" alt="Notification Image" class="notification-img img-fluid">
-        </div>
-        <div class="col-12 col-sm-10">
-            <h2><strong>{% trans "ФУНКЦІЯ СПОВІЩЕННЯ" %}</strong></h2>
-            <h3>{% trans "ОСОБЛИВОСТІ" %}</h3>
-        </div>
-    </div>
-</div>
-
-<div id="notification6" class="alert alert-dismissible fade show position-fixed bottom-0 end-0 mb-3 me-3" style="display: none; z-index: 1050;" data-bs-toggle="tooltip" title="ФУНКЦІЯ ПЕРЕГЛЯДУ PDF">
-    <div class="d-flex flex-column flex-sm-row align-items-center gap-3">
-        <div class="col-12 col-sm-2 mb-2 mb-sm-0">
-            <img src="{% static 'programming-image.jpg' %}" alt="Notification Image" class="notification-img img-fluid">
-        </div>
-        <div class="col-12 col-sm-10">
-            <h2><strong>{% trans "ФУНКЦІЯ СПОВІЩЕННЯ" %}</strong></h2>
-            <h3>{% trans "ЗАПИТ НА РОЗРОБЛЕННЯ ПРОГРАМ" %}</h3>
-        </div>
-    </div>
-</div>
-
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
@@ -1187,10 +974,6 @@ window.addEventListener('resize', handleHoverDropdowns);
     });
 </script>
 
-
-
-
-  <!-- Optional: Add Bootstrap JS (and Popper.js for dropdowns, tooltips, etc.)-->
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 
@@ -1272,7 +1055,6 @@ window.addEventListener('resize', handleHoverDropdowns);
     });
 </script>
 
-
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const hamburgerButton = document.getElementById('hamburger-button');
@@ -1317,253 +1099,6 @@ window.addEventListener('resize', handleHoverDropdowns);
 </script>
 
       <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@alpha"></script>
-      <script>
-        docsearch({
-          container: '#docsearch',
-          appId: 'IQRAP6YJPJ',
-          indexName: 'webtechnodeveloper_pythonanywhere_com_iqrap6yjpj_pages',
-          apiKey: '9a60f3c3a16d6613a3439e42b334926d',
-          transformItems: function(hits) {
-            var domain = window.location.origin + "/";
-            hits.forEach(function(hit) {
-              if (! hit.url.startsWith(domain)) {
-                hit.url = hit.url.replace(/^https?:\/\/[^\/]+\//, domain);
-              }
-            });
-            return hits;
-          }
-        });
-      </script>
-
-
-
-        <script>
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', function() {
-      const destination = this.getAttribute('data-url');
-      if (destination) {
-        window.location.href = destination;
-      }
-    });
-  });
-</script>
-    <script>
-  document.querySelectorAll('.dropdown-item').forEach(link => {
-    link.addEventListener('click', function() {
-      const destination = this.getAttribute('data-url');
-      if (destination) {
-        window.location.href = destination;
-      }
-    });
-  });
-</script>
-
-
-{% if show_banner_form and NEWSLETTER_IFRAME_SRC %}
-<div class="container-fluid p-0 m-0 w-100 position-relative granulated-bg overflow-hidden" id="banner-container-{{ banner_form_id }}" style="width: 100vw !important; margin-left: calc(-50vw + 50%); background-color: #dee2e6; border-top-left-radius: 1.5rem !important; border-top-right-radius: 1.5rem !important;">
-    <div class="card shadow-none border-0 rounded-0 w-100 position-relative overflow-hidden bg-transparent m-0 p-0" style="border-top-left-radius: 1.5rem !important; border-top-right-radius: 1.5rem !important; width: 100% !important;">
-        <!-- Functional Close Button -->
-        <button type="button" class="btn-close position-absolute top-0 end-0 m-4 z-3 bg-white p-2 rounded-circle shadow-sm" aria-label="Close" onclick="dismissBanner('{{ banner_form_id }}')"></button>
-
-        <div class="row g-0 align-items-stretch w-100 m-0 bg-transparent">
-            <!-- Left Side: Background Image & Newsletter Description (Takes 1/3 width, full height background image) -->
-            <div class="col-lg-4 text-center p-0 m-0 position-relative d-flex flex-column justify-content-between banner-bg-left" style="background-image: url('{% static 'picture_02.jpg' %}'); background-size: cover; background-position: center; min-height: 33vh;">
-                <!-- Dark overlay for text readability over background image -->
-                <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50 z-0"></div>
-
-                <div class="text-start p-4 p-md-5 position-relative z-1 my-auto">
-                    <h3 class="fw-bold text-white mb-3">
-                        <span>{% trans "IT SUBSECTIONS" %}</span>
-                    </h3>
-                    <p class="text-light mb-0 lead fs-6">
-                        Explore the nuances of microservices, serverless applications, low-latency APIs, and database tuning for high-traffic environments.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Right Side: Google Form Embed (Takes 2/3 width) -->
-            <div class="col-lg-8 text-center p-3 p-md-4 my-auto">
-                <div class="ratio ratio-16x9 w-100" style="min-height: 400px;">
-                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfpBVq93zgXQDPqoMjM4TGUOD2VAOBhenbhdNm_9U9My9W01w/viewform?embedded=true" width="100%" height="100%" style="border:0;" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<style>
-    .granulated-bg {
-        background-image: url('{% static "granulated-bg.jpg" %}') !important;
-        background-repeat: repeat !important;
-        background-blend-mode: multiply !important;
-    }
-    #banner-container-{{ banner_form_id }} {
-        border-top-left-radius: 1.5rem !important;
-        border-top-right-radius: 1.5rem !important;
-    }
-</style>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const banner = document.getElementById("banner-container-{{ banner_form_id }}");
-        const footer = document.getElementById("dynamic-site-footer") || document.querySelector("footer");
-
-        if (banner && footer) {
-            footer.parentNode.insertBefore(banner, footer);
-            footer.style.display = 'none';
-        }
-    });
-
-    function dismissBanner(bannerId) {
-        const bannerElement = document.getElementById(`banner-container-${bannerId}`);
-        const footer = document.getElementById("dynamic-site-footer") || document.querySelector("footer");
-
-        if (bannerElement) {
-            bannerElement.style.transition = 'opacity 0.3s ease';
-            bannerElement.style.opacity = '0';
-            setTimeout(() => {
-                bannerElement.remove();
-                if (footer) {
-                    footer.style.display = '';
-                }
-            }, 300);
-        }
-    }
-</script>
-{% endif %}
-
-
-<script>
-    // Optional: You can manually trigger the dropdown toggle if needed
-    $('#techBlogDropdown00').on('click', function (e) {
-        $(this).next('.dropdown-menu').toggleClass('show');
-        e.stopPropagation();  // Prevents closing dropdown when clicking inside
-    });
-
-    // Close dropdown when clicked outside
-    $(document).on('click', function (e) {
-        if (!$(e.target).closest('.dropdown').length) {
-            $('.dropdown-menu').removeClass('show');
-        }
-    });
-</script>
-<script>
-    $('#techBlogDropdown01').on('click', function (e) {
-        $(this).next('.dropdown-menu').toggleClass('show');
-        e.stopPropagation();  // Prevents closing dropdown when clicking inside
-    });
-
-    // Close dropdown when clicked outside
-    $(document).on('click', function (e) {
-        if (!$(e.target).closest('.dropdown').length) {
-            $('.dropdown-menu').removeClass('show');
-        }
-    });
-</script>
-<script>
-    $('#techBlogDropdown02').on('hover', function (e) {
-        $(this).next('.dropdown-menu').toggleClass('show');
-        e.stopPropagation();  // Prevents closing dropdown when clicking inside
-    });
-
-    // Close dropdown when clicked outside
-    $(document).on('click', function (e) {
-        if (!$(e.target).closest('.dropdown').length) {
-            $('.dropdown-menu').removeClass('show');
-        }
-    });
-</script>
-<script>
-    $('#techBlogDropdown03').on('hover', function (e) {
-        $(this).next('.dropdown-menu').toggleClass('show');
-        e.stopPropagation();  // Prevents closing dropdown when clicking inside
-    });
-
-    // Close dropdown when clicked outside
-    $(document).on('click', function (e) {
-        if (!$(e.target).closest('.dropdown').length) {
-            $('.dropdown-menu').removeClass('show');
-        }
-    });
-</script>
-<script>
-    $('#techBlogDropdown04').on('hover', function (e) {
-        $(this).next('.dropdown-menu').toggleClass('show');
-        e.stopPropagation();  // Prevents closing dropdown when clicking inside
-    });
-
-    // Close dropdown when clicked outside
-    $(document).on('click', function (e) {
-        if (!$(e.target).closest('.dropdown').length) {
-            $('.dropdown-menu').removeClass('show');
-        }
-    });
-</script>
-<script>
-    $('#techBlogDropdown05').on('hover', function (e) {
-        $(this).next('.dropdown-menu').toggleClass('show');
-        e.stopPropagation();  // Prevents closing dropdown when clicking inside
-    });
-
-    // Close dropdown when clicked outside
-    $(document).on('click', function (e) {
-        if (!$(e.target).closest('.dropdown').length) {
-            $('.dropdown-menu').removeClass('show');
-        }
-    });
-</script>
-<script>
-    $('#techBlogDropdown06').on('hover', function (e) {
-        $(this).next('.dropdown-menu').toggleClass('show');
-        e.stopPropagation();  // Prevents closing dropdown when clicking inside
-    });
-
-    // Close dropdown when clicked outside
-    $(document).on('click', function (e) {
-        if (!$(e.target).closest('.dropdown').length) {
-            $('.dropdown-menu').removeClass('show');
-        }
-    });
-</script>
-<script>
-    $('#techBlogDropdown07').on('hover', function (e) {
-        $(this).next('.dropdown-menu').toggleClass('show');
-        e.stopPropagation();  // Prevents closing dropdown when clicking inside
-    });
-
-    // Close dropdown when clicked outside
-    $(document).on('click', function (e) {
-        if (!$(e.target).closest('.dropdown').length) {
-            $('.dropdown-menu').removeClass('show');
-        }
-    });
-</script>
-<script>
-    $('#techBlogDropdown08').on('hover', function (e) {
-        $(this).next('.dropdown-menu').toggleClass('show');
-        e.stopPropagation();  // Prevents closing dropdown when clicking inside
-    });
-
-    // Close dropdown when clicked outside
-    $(document).on('click', function (e) {
-        if (!$(e.target).closest('.dropdown').length) {
-            $('.dropdown-menu').removeClass('show');
-        }
-    });
-</script>
-<script>
-    $('#techBlogDropdown09').on('hover', function (e) {
-        $(this).next('.dropdown-menu').toggleClass('show');
-        e.stopPropagation();  // Prevents closing dropdown when clicking inside
-    });
-
-    // Close dropdown when clicked outside
-    $(document).on('click', function (e) {
-        if (!$(e.target).closest('.dropdown').length) {
-            $('.dropdown-menu').removeClass('show');
-        }
-    });
-</script>
 {% endblock %}
 
 

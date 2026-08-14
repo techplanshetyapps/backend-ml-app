@@ -12,7 +12,7 @@ class AdListView(ListView):
 
 # Notebook Dashboard View
 class AutoMatrixDashboardView(TemplateView):
-    template_name = 'traffic_matrix_dashboard.html'
+    template_name = 'govsim/traffic_matrix_dashboard.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
